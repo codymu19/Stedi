@@ -1,23 +1,25 @@
-import React from "react";
+import {useState} from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
-const UselessTextInput = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
+const Login = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [OneTimePassword, setOneTimePassword] = useState(null);
 
   return (
     <SafeAreaView>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={setPhoneNumber}
+        value={phoneNumber}
+        placeholder="(801) 555-1212"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
+        onChangeText={setOneTimePassword}
+        value={OneTimePassword}
+        placeholder="1234"
         keyboardType="numeric"
+        secureTextEntry={true}
       />
     </SafeAreaView>
   );
@@ -32,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UselessTextInput;
+export default Login ;
