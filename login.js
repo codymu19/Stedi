@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, View } fro
 
 const sendText = async (phoneNumber) => {
   // using fetch do a Post to http://dev.stedi.me/twofactorlogin/###-###-####
-  await fetch('http://dev.stedi.me/twofactorlogin/' + phoneNumber, {
+  await fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/text'
@@ -46,8 +46,8 @@ const Login = () => {
         <TouchableOpacity
           style={buttonStyle.button}
           // onPress={onPress}
-          // onPress={()=>{console.log('Login button was clicked')}}
-          onPress={()=>{sendText(phoneNumber)}}
+          onPress={()=>{console.log('Login button was clicked')}}
+          // onPress={()=>{sendText(phoneNumber)}}
         >
           <Text style={buttonStyle.text}>Login</Text>
         </TouchableOpacity>
