@@ -3,15 +3,41 @@ import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, View } fro
 
 const sendText = async (phoneNumber) => {
   // using fetch do a Post to http://dev.stedi.me/twofactorlogin/###-###-####
-  await fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
+  const loginResponse = await fetch('https://dev.stedi.me/twofactorlogin/'+phoneNumber,{
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/text'
-    },
-  })
-  console.log("Phone Number:",phoneNumber);
+    headers:{
+      'content-type':'application/text'
+    }
+  });
+  const loginResponseText = await loginResponse.text();
+  console.log('Login Response',loginResponseText);
 
 };
+
+const getToken = async(phoneNumber,OneTimePassword) =>{
+  const loginResponse = await fetch('https://dev.stedi.me/twofactorlogin',{
+    method: 'POST',
+    headers:{
+      'content-type':'application/text'
+    },
+    body:{
+      phoneNumber,
+      OneTimePassword
+    }
+  });
+  const token = await loginResponse.text();
+  console.log(token)
+}
+
+// await fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/text'
+//     },
+//   })
+//   console.log("Phone Number:",phoneNumber);
+
+// };
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -46,8 +72,7 @@ const Login = () => {
         <TouchableOpacity
           style={buttonStyle.button}
           // onPress={onPress}
-          onPress={()=>{console.log('Login button was clicked')}}
-          // onPress={()=>{sendText(phoneNumber)}}
+          onPress={()=>{getToken(phoneNumber)}}
         >
           <Text style={buttonStyle.text}>Login</Text>
         </TouchableOpacity>
