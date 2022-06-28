@@ -60,9 +60,7 @@ export default function App(props) {
 
   } else{
     return(
-      <View>
-        <Login></Login>
-      </View>
+      <Login setUserLoggedIn={setUserLoggedIn}/>
     )
   }
 
