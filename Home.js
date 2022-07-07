@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Icons from './Icons.js';
 import Bar  from './Bar.js';
+import {useState} from "react";
 
 // const validateToken = () => {
 //   let tokenEmail="";
@@ -24,9 +25,11 @@ import Bar  from './Bar.js';
 
 
 const Home = () => {
+  const [userName, setUserName] = useState(props.userName);
+  console.log(props.userName)
   return (
     <View>
-      <Bar loggedInUser='y4fill@gmail.com' />
+      <Bar userName= {props.userName} />
       <Icons />
     </View>
   );

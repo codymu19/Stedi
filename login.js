@@ -32,10 +32,12 @@ const getToken = async({phoneNumber,oneTimePassword, setUserLoggedIn}) =>{
   }
   const tokenResponseString = await tokenResponse.text();
   console.log(tokenResponseString)
-  const emailResponse = await fetch('https://dev.stedi.me/validate/' + token)
+  const emailResponse = await fetch('https://dev.stedi.me/validate/' + tokenResponseString)
   const textEmail = await emailResponse.text()
-  setUserName = (textEmail)
+  console.log("Email",textEmail)
+  // setUserName = (textEmail)
 }
+
 
 // await fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
 //     method: 'POST',
