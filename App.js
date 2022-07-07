@@ -13,7 +13,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App(props) {
-  const [userLoggedIn, setUserLoggedIn] = useState()
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
 
   if(userLoggedIn){
 
@@ -26,7 +27,8 @@ export default function App(props) {
       >
         <Tab.Screen
           name='Home'
-          component={Home}
+          children= {()=><Home loggedInUser= 'fred'/>}
+          // component={Home}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -60,7 +62,8 @@ export default function App(props) {
 
   } else{
     return(
-      <Login setUserLoggedIn={setUserLoggedIn}/>
+      <Login setUserLoggedIn={setUserLoggedIn}
+      setUserName = {setUserName}/>
     )
   }
 

@@ -8,7 +8,7 @@ function Setting() {
     return(
       <View>
       <Button
-      title="email"
+      title="Log in"
       onPress={() => Alert.alert('Simple Button pressed')}
     />
       </View>
