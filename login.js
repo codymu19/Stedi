@@ -39,22 +39,10 @@ const getToken = async({phoneNumber,oneTimePassword, setUserLoggedIn}) =>{
 }
 
 
-// await fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/text'
-//     },
-//   })
-//   console.log("Phone Number:",phoneNumber);
-
-// };
-
 const Login = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOneTimePassword] = useState(null);
-  const [userToken, setUserToken] = useState("");
-  // const [count, setCount] = useState(0);
-  // const onPress = () => setCount(prevCount => prevCount + 1);?
+  const [userToken, setUserToken] = useState(0);
 
   return (
     <SafeAreaView style={styles.mainView}>
@@ -84,7 +72,7 @@ const Login = (props) => {
           style={buttonStyle.button}
           // onPress={onPress}
           onPress={()=>{
-            getToken({phoneNumber, oneTimePassword, setUserLoggedIn:props.setUserLoggedIn});
+            getToken({phoneNumber, oneTimePassword, setUserLoggedIn:props.setUserLoggedIn, setUserName:props.setUserName});
         }}
         >
           <Text style={buttonStyle.text}>Login</Text>
